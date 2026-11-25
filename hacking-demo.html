@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Cyber Terminal Demo</title>
+<style>
+body{background:#080e0a;color:#32ff75;font:16px monospace;padding:24px;max-width:800px;margin:auto}h1{font-size:24px}pre{white-space:pre-wrap;line-height:1.8;min-height:220px}progress{width:100%;accent-color:#32ff75}button{background:#32ff75;color:#080e0a;border:0;padding:12px 20px;border-radius:5px;font-weight:bold;cursor:pointer}small{color:#a0b9a8}
+</style></head>
+<body><h1>CYBER TERMINAL v1.0</h1><small>Educational simulation — no real device access</small><hr><pre id="terminal">&gt; System ready...</pre><progress id="progress" max="100" value="0"></progress><p><button id="start">Start simulation</button></p>
+<script>
+const lines=['Initializing virtual terminal...','Connecting to simulated network...','Scanning virtual device...','Analyzing dummy security records...','Simulating firewall check...','Virtual access granted...','😂 You have been pranked!','This was only a simulation. No data was accessed or collected.'];
+const terminal=document.getElementById('terminal'),progress=document.getElementById('progress'),button=document.getElementById('start');
+function run(){button.disabled=true;terminal.textContent='';progress.value=0;let i=0;function step(){terminal.textContent+='> '+lines[i++]+'\n';progress.value=i/lines.length*100;if(i<lines.length)setTimeout(step,850);else{button.disabled=false;button.textContent='Run again';}}step();}
+button.addEventListener('click',run);run();
+</script></body></html>
